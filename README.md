@@ -1,43 +1,118 @@
-**Git commands**
+# Git Commands Reference | مرجع دستورات گیت
 
-**git init**  `(git init) for initializing a new repository and telling git to track the files in the current directory`
+A categorized, corrected, and expanded cheat sheet with English and Persian explanations.
+یک مرجع دسته‌بندی‌شده، اصلاح‌شده و تکمیل‌شده به همراه توضیح فارسی و انگلیسی.
 
-**git clone <repository_url>**  `(git clone <repository_url>) for cloning a repository from a remote source like github into a new directory`
+> **Note:** A few commands from the original list had incorrect syntax (e.g. `git add remote`, `git push remote`). These are fixed below with the correct Git syntax.
+> **نکته:** چند دستور در فهرست اولیه سینتکس اشتباه داشتند (مثل `git add remote`، `git push remote`)؛ در ادامه با سینتکس صحیح گیت اصلاح شده‌اند.
 
-**git add <file>**  `(git add <file>) for adding a file to the staging area we can simply write git add . to add all the files to the staging area`
+---
 
-**git commit -a -m "commit message"**  `(git commit -a -m "commit message") for committing the changes to the repository we can simply write git commit -a to commit all the changes to the repository`
+## 1. Setup & Initialization | راه‌اندازی اولیه
 
-**git commit -m "commit message"**  `(git commit -m "commit message") for committing the changes to the repository`
+| Command | English | فارسی |
+|---|---|---|
+| `git init` | Initialize a new repository in the current directory | یک مخزن جدید در دایرکتوری فعلی می‌سازد |
+| `git clone <repository_url>` | Clone a remote repository (e.g. from GitHub) into a new local directory | یک مخزن ریموت (مثلاً از گیت‌هاب) را در یک پوشه محلی جدید کلون می‌کند |
+| `git clone --depth 1 <repository_url>` | Shallow clone — only fetches the latest commit, faster for large repos | کلون سبک — فقط آخرین کامیت را می‌گیرد، برای مخازن بزرگ سریع‌تر است |
+| `git config --global user.name "Name"` | Set your Git username globally | نام کاربری گیت را به‌صورت سراسری تنظیم می‌کند |
+| `git config --global user.email "you@example.com"` | Set your Git email globally | ایمیل گیت را به‌صورت سراسری تنظیم می‌کند |
 
-**git push**  `(git push) for pushing the changes to the remote repository`
+---
 
-**git pull**  `(git pull) for pulling the changes from the remote repository`
+## 2. Staging & Committing | استیج و کامیت
 
-**git status**  `(git status) for checking the status of the repository`
+| Command | English | فارسی |
+|---|---|---|
+| `git status` | Show the current state of the working directory and staging area | وضعیت فعلی دایرکتوری کاری و ناحیه استیج را نشان می‌دهد |
+| `git add <file>` | Add a specific file to the staging area | یک فایل مشخص را به ناحیه استیج اضافه می‌کند |
+| `git add .` | Add all changed files to the staging area | تمام فایل‌های تغییر یافته را به ناحیه استیج اضافه می‌کند |
+| `git commit -m "message"` | Commit staged changes with a message | تغییرات استیج‌شده را با یک پیام کامیت می‌کند |
+| `git commit -a -m "message"` | Stage and commit all tracked file changes in one step | تغییرات همه فایل‌های ردیابی‌شده را در یک مرحله استیج و کامیت می‌کند |
+| `git diff` | Show unstaged changes between working directory and last commit | تفاوت تغییرات استیج‌نشده با آخرین کامیت را نشان می‌دهد |
+| `git diff --staged` | Show changes that are staged but not yet committed | تغییرات استیج‌شده‌ای که هنوز کامیت نشده‌اند را نشان می‌دهد |
 
-**git branch <branch_name>**  `(git branch <branch_name>) for creating a new branch`
+---
 
-**git branch -d <branch_name>**  `(git branch -d <branch_name>) for deleting a branch`
+## 3. Branching & Merging | شاخه‌بندی و ادغام
 
-**git checkout <branch_name>**  `(git checkout <branch_name>) for switching to a branch`
+| Command | English | فارسی |
+|---|---|---|
+| `git branch` | List all local branches | لیست تمام شاخه‌های محلی را نشان می‌دهد |
+| `git branch <branch_name>` | Create a new branch | یک شاخه جدید ایجاد می‌کند |
+| `git branch -d <branch_name>` | Delete a branch (safe — only if merged) | یک شاخه را حذف می‌کند (ایمن — فقط اگر merge شده باشد) |
+| `git branch -D <branch_name>` | Force-delete a branch, even if not merged | حذف اجباری یک شاخه، حتی اگر merge نشده باشد |
+| `git checkout <branch_name>` | Switch to an existing branch | به یک شاخه موجود سوییچ می‌کند |
+| `git checkout -b <branch_name>` | Create a new branch and switch to it in one step | یک شاخه جدید می‌سازد و همزمان به آن سوییچ می‌کند |
+| `git switch <branch_name>` | Modern alternative to `checkout` for switching branches | جایگزین مدرن `checkout` برای سوییچ بین شاخه‌ها |
+| `git merge <branch_name>` | Merge the given branch into the current branch | شاخه مشخص‌شده را در شاخه فعلی ادغام می‌کند |
+| `git rebase <branch_name>` | Reapply current branch's commits on top of the target branch | کامیت‌های شاخه فعلی را روی شاخه هدف بازپیاده‌سازی می‌کند |
 
-**git merge <branch_name>**  `(git merge <branch_name>) for merging a branch into the current branch`
+---
 
-**git rebase <branch_name>**  `(git rebase <branch_name>) for rebasing the current branch onto the target branch`
+## 4. Remote Repositories | مخازن ریموت
 
-**git stash**  `(git stash) for stashing the changes in the current branch`
+| Command | English | فارسی |
+|---|---|---|
+| `git remote -v` | List all configured remotes with their URLs | لیست تمام ریموت‌های تنظیم‌شده به همراه آدرس آن‌ها |
+| `git remote add <remote_name> <remote_url>` | Add a new remote repository | یک مخزن ریموت جدید اضافه می‌کند |
+| `git remote remove <remote_name>` | Remove a configured remote | یک ریموت تنظیم‌شده را حذف می‌کند |
+| `git fetch <remote_name>` | Download changes from a remote without merging them | تغییرات ریموت را دانلود می‌کند بدون اینکه merge کند |
+| `git pull` | Fetch and merge changes from the tracked remote branch | تغییرات را از شاخه ریموت مرتبط می‌گیرد و merge می‌کند |
+| `git pull <remote_name> <branch_name>` | Fetch and merge from a specific remote branch | تغییرات را از یک شاخه ریموت مشخص می‌گیرد و merge می‌کند |
+| `git push` | Push commits to the tracked remote branch | کامیت‌ها را به شاخه ریموت مرتبط ارسال می‌کند |
+| `git push <remote_name> <branch_name>` | Push commits to a specific remote branch | کامیت‌ها را به یک شاخه ریموت مشخص ارسال می‌کند |
+| `git push -u origin <branch_name>` | Push and set upstream tracking for future `push`/`pull` | ارسال می‌کند و شاخه ریموت را برای `push`/`pull`های بعدی پیش‌فرض می‌کند |
+| `git merge <remote_name>/<branch_name>` | Merge a specific remote-tracking branch into the current one | یک شاخه ریموت مشخص را در شاخه فعلی ادغام می‌کند |
+| `git rebase <remote_name>/<branch_name>` | Rebase the current branch onto a remote-tracking branch | شاخه فعلی را روی یک شاخه ریموت بازپیاده‌سازی می‌کند |
 
-**git add remote <remote_name> <remote_url>**    `(git add remote <remote_name> <remote_url>) for adding a remote repository to the local repository`
+---
 
-**git push remote <remote_name> <branch_name>**  `(git push remote <remote_name> <branch_name>) for pushing the changes to the remote repository`
+## 5. Stashing | ذخیره موقت تغییرات
 
-**git pull remote <remote_name> <branch_name>**  `(git pull remote <remote_name> <branch_name>) for pulling the changes from the remote repository` 
+| Command | English | فارسی |
+|---|---|---|
+| `git stash` | Temporarily save uncommitted changes | تغییرات کامیت‌نشده را به‌طور موقت ذخیره می‌کند |
+| `git stash list` | List all stashed changes | لیست تمام تغییرات ذخیره‌شده موقت را نشان می‌دهد |
+| `git stash pop` | Reapply the most recent stash and remove it from the list | آخرین stash را دوباره اعمال کرده و از لیست حذف می‌کند |
+| `git stash drop` | Delete the most recent stash without applying it | آخرین stash را بدون اعمال کردن، حذف می‌کند |
 
-**git fetch remote <remote_name>**  `(git fetch remote <remote_name>) for fetching the changes from the remote repository`
+---
 
-**git merge remote <remote_name> <branch_name>**  `(git merge remote <remote_name> <branch_name>) for merging the changes from the remote repository into the current branch`
+## 6. History & Inspection | تاریخچه و بررسی
 
-**git rebase remote <remote_name> <branch_name>**  `(git rebase remote <remote_name> <branch_name>) for rebasing the current branch onto the target branch`
+| Command | English | فارسی |
+|---|---|---|
+| `git log` | Show commit history | تاریخچه کامیت‌ها را نشان می‌دهد |
+| `git log --oneline --graph` | Show a compact, graphical commit history | تاریخچه کامیت‌ها را به‌صورت خلاصه و گرافیکی نشان می‌دهد |
+| `git show <commit_hash>` | Show details and changes of a specific commit | جزئیات و تغییرات یک کامیت مشخص را نشان می‌دهد |
+| `git blame <file>` | Show who last modified each line of a file | نشان می‌دهد آخرین‌بار هر خط از یک فایل را چه کسی تغییر داده |
 
-**git push -u origin <branch_name>**  `(git push -u origin <branch_name>) for pushing the changes to the remote repository and setting the branch to track the remote repository`
+---
+
+## 7. Undoing Changes | بازگرداندن تغییرات
+
+| Command | English | فارسی |
+|---|---|---|
+| `git reset <file>` | Unstage a file, keeping its changes in the working directory | یک فایل را از استیج خارج می‌کند، تغییراتش در دایرکتوری کاری باقی می‌ماند |
+| `git reset --hard <commit_hash>` | Reset working directory and history to a specific commit (destructive) | دایرکتوری کاری و تاریخچه را به یک کامیت مشخص برمی‌گرداند (مخرب است) |
+| `git revert <commit_hash>` | Create a new commit that undoes a previous commit (safe for shared history) | یک کامیت جدید می‌سازد که کامیت قبلی را خنثی می‌کند (برای تاریخچه مشترک ایمن است) |
+| `git cherry-pick <commit_hash>` | Apply a specific commit from another branch onto the current one | یک کامیت مشخص از شاخه دیگر را روی شاخه فعلی اعمال می‌کند |
+
+---
+
+## 8. Tagging | تگ‌گذاری
+
+| Command | English | فارسی |
+|---|---|---|
+| `git tag <tag_name>` | Create a lightweight tag on the current commit | یک تگ ساده روی کامیت فعلی ایجاد می‌کند |
+| `git tag -a <tag_name> -m "message"` | Create an annotated tag with a message | یک تگ همراه با پیام (annotated) ایجاد می‌کند |
+| `git push origin <tag_name>` | Push a tag to the remote repository | یک تگ را به مخزن ریموت ارسال می‌کند |
+
+---
+
+## 9. Ignoring Files | نادیده گرفتن فایل‌ها
+
+| File | English | فارسی |
+|---|---|---|
+| `.gitignore` | A file listing patterns Git should not track (e.g. `node_modules/`, `.env`) | فایلی که الگوهایی را که گیت نباید ردیابی کند مشخص می‌کند (مثلاً `node_modules/`، `.env`) |
