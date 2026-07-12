@@ -26,9 +26,10 @@ A categorized, corrected, and expanded cheat sheet with English and Persian expl
 |---|---|---|
 | `git status` | Show the current state of the working directory and staging area | وضعیت فعلی دایرکتوری کاری و ناحیه استیج را نشان می‌دهد |
 | `git add <file>` | Add a specific file to the staging area | یک فایل مشخص را به ناحیه استیج اضافه می‌کند |
-| `git add .` | Add all changed files to the staging area | تمام فایل‌های تغییر یافته را به ناحیه استیج اضافه می‌کند |
+| `git add .` | Add all changed files in the current directory to the staging area | تمام فایل‌های تغییر یافته در دایرکتوری فعلی را به ناحیه استیج اضافه می‌کند |
+| `git add --all` | Add all files in the all directories to the staging area | تمام فایل‌ها در تمام دایرکتوری‌ها را به ناحیه استیج اضافه می‌کند |
 | `git commit -m "message"` | Commit staged changes with a message | تغییرات استیج‌شده را با یک پیام کامیت می‌کند |
-| `git commit -a -m "message"` | Stage and commit all tracked file changes in one step | تغییرات همه فایل‌های ردیابی‌شده را در یک مرحله استیج و کامیت می‌کند |
+| `git commit -a -m "message"` | Stage and commit all tracked file changes in one step | تغییرات همه فایل‌های ردیابی‌شده در دایرکتوری فعلی را در یک مرحله استیج و کامیت می‌کند |
 | `git diff` | Show unstaged changes between working directory and last commit | تفاوت تغییرات استیج‌نشده با آخرین کامیت را نشان می‌دهد |
 | `git diff --staged` | Show changes that are staged but not yet committed | تغییرات استیج‌شده‌ای که هنوز کامیت نشده‌اند را نشان می‌دهد |
 
